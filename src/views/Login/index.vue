@@ -1,6 +1,7 @@
 <template>
   <div>
-    <van-nav-bar title="登录">
+    <!-- @click-left="$router.back()" 点击返回上一页 -->
+    <van-nav-bar title="登录" @click-left="$router.back()">
       <van-icon name="cross" slot="left" />
     </van-nav-bar>
     <van-form @submit="onSubmit" ref="form">
@@ -14,6 +15,7 @@
         ]"
       >
         <i class="toutiao toutiao-shouji" slot="left-icon"></i>
+        <!-- <MyIcon class="shouji" slot="left-icon"></MyIcon> -->
       </van-field>
       <van-field
         v-model.trim="code"
@@ -72,6 +74,8 @@ export default {
         const res = await login(values)
         console.log(res)
         this.$store.commit('setUser', res.data.data)
+        // 点击登录跳转到my页面,给router的my加name:'my'
+        this.$router.push({ name: 'my' })
       } catch (err) {
         console.log(err)
       }
