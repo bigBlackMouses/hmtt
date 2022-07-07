@@ -13,12 +13,16 @@ import '@/styles/index.less'
 import * as obj from '@/filters'
 
 import MyIcon from '@/components/MyIcon.vue'
+
+import FollowUser from '@/components/FollowUser.vue'
+import '@/components'
 Object.keys(obj).forEach(key => {
   Vue.filter(key, obj[key])
 })
 
 Vue.config.productionTip = false
 Vue.component('MyIcon', MyIcon)
+Vue.component(FollowUser.name, FollowUser)
 
 Vue.use(Vant)
 new Vue({
